@@ -3,133 +3,156 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OpenRouter 大盘收入看板</title>
+<title>OpenRouter Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <style>
-  :root { --bg:#0b0e14; --card:#151a23; --border:#232b38; --text:#e6edf3; --muted:#8b98a9; --accent:#4f9eff; --green:#3fb950; --red:#f85149; }
-  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
-  header{padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  h1{font-size:18px;margin:0} .sub{color:var(--muted);font-size:12px;margin-top:4px}
-  .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  select,button{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;cursor:pointer}
-  button:hover{border-color:var(--accent)}
-  main{padding:24px 28px;max-width:1400px;margin:0 auto}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
-  .card .label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
-  .card .value{font-size:24px;font-weight:700;margin-top:8px}
-  .card .delta{font-size:12px;margin-top:6px}
-  .up{color:var(--green)} .down{color:var(--red)}
-  .panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:24px}
-  .panel h2{font-size:14px;margin:0 0 14px;color:var(--muted);font-weight:600}
-  .chart-wrap{position:relative;height:340px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--border)}
-  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
-  th:first-child,td:first-child{text-align:left}
-  tr:hover td{background:rgba(255,255,255,.02)}
-  .mono{font-variant-numeric:tabular-nums}
-  .tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;background:rgba(79,158,255,.15);color:var(--accent)}
-  .foot{color:var(--muted);font-size:11px;margin-top:20px;line-height:1.7}
-  a{color:var(--accent)}
+:root{--bg:#0b0e14;--card:#151a23;--border:#232b38;--text:#e6edf3;--muted:#8b98a9;--accent:#4f9eff;--green:#3fb950;--red:#f85149;--orange:#ffa657}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC','Microsoft YaHei',sans-serif}
+header{padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+h1{font-size:18px;margin:0}h2{font-size:14px;font-weight:600}.sub{color:var(--muted);font-size:12px;margin-top:4px}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+select,button{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+main{padding:24px 28px;max-width:1500px;margin:0 auto}
+.grid{display:grid;gap:16px;margin-bottom:24px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.cols2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+.card .label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.card .value{font-size:24px;font-weight:700;margin-top:8px}.card .delta{font-size:12px;margin-top:6px}
+.up{color:var(--green)}.down{color:var(--red)}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:24px}
+.panel h2{margin:0 0 14px;color:var(--muted)}
+.chart-wrap{position:relative}.h380{height:380px}.h500{height:500px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.4px;position:sticky;top:0;background:var(--card)}
+th:first-child,td:first-child{text-align:left}
+tr:hover td{background:rgba(255,255,255,.02)}
+.mono{font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;background:rgba(79,158,255,.15);color:var(--accent)}
+.tag.tier-premium{background:rgba(248,81,73,.18);color:#ff7b72}
+.tag.tier-standard{background:rgba(255,166,87,.18);color:var(--orange)}
+.tag.tier-budget{background:rgba(63,185,80,.18);color:var(--green)}
+.tag.tier-free{background:rgba(139,152,169,.2);color:var(--muted)}
+.foot{color:var(--muted);font-size:11px;margin-top:20px;line-height:1.7}
+.bar-cell{position:relative}.bar-bg{position:absolute;left:0;top:0;bottom:0;background:rgba(79,158,255,.12);border-radius:4px}.bar-text{position:relative;z-index:1}
+.insight{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+.table-scroll{max-height:560px;overflow:auto}
 </style>
 </head>
 <body>
 <header>
-  <div>
-    <h1>📊 OpenRouter 大盘收入看板</h1>
-    <div class="sub">每日抓取 Rankings Token 量 × 模型挂牌价，估算大盘总 token 费用（UTC 日）</div>
-  </div>
-  <div class="controls">
-    <label class="sub">日期</label>
-    <select id="dateSel"></select>
-    <button id="scrapeBtn">🔄 立即抓取</button>
-  </div>
+<div><h1>OpenRouter Dashboard</h1><div class="sub">Token x Price - Investor View</div></div>
+<div class="controls"><label class="sub">Date</label><select id="dateSel"></select><button id="scrapeBtn">Scrape</button></div>
 </header>
 <main>
-  <div class="grid" id="kpis"></div>
-  <div class="panel"><h2>每日大盘总费用趋势</h2><div class="chart-wrap"><canvas id="costChart"></canvas></div></div>
-  <div class="panel"><h2>每日 Token / 请求量趋势</h2><div class="chart-wrap"><canvas id="tokenChart"></canvas></div></div>
-  <div class="panel">
-    <h2 id="modelTitle">当日模型明细（按费用降序）</h2>
-    <div style="overflow-x:auto;"><table id="modelTable"><thead><tr>
-      <th>模型</th><th>输入 Token</th><th>输出 Token</th><th>请求数</th><th>输入价/M</th><th>输出价/M</th><th>费用 (USD)</th>
-    </tr></thead><tbody></tbody></table></div>
-  </div>
-  <div class="foot">
-    ⚠️ 数据来自 <code>/api/frontend/v1/rankings/models?view=day</code> 与 <code>/api/v1/models</code>。费用 = 未缓存输入×输入价 + 缓存输入×缓存价 + 输出×输出价 + 请求数×固定费。embedding/重排与视频/音频/图片模型不计入；每日 23:55 UTC 自动抓取，历史仅从首次运行起积累。
-  </div>
+<div class="grid kpis" id="kpis"></div>
+<div class="grid cols2">
+<div class="panel"><h2>Revenue by Company</h2><div class="chart-wrap h380"><canvas id="companyPie"></canvas></div></div>
+<div class="panel"><h2>Revenue by Price Tier</h2><div class="chart-wrap h380"><canvas id="tierPie"></canvas></div></div>
+</div>
+<div class="panel"><h2>Daily Revenue Trend by Company (Top 8)</h2><div class="chart-wrap h380"><canvas id="companyTrend"></canvas></div><div class="insight" id="trendInsight"></div></div>
+<div class="panel"><h2>Volume vs Price: Token Share vs Avg Price/M</h2><div class="chart-wrap"><canvas id="bubble" style="height:400px"></canvas></div><div class="insight">Top-right = premium + high share; bottom-right = volume player; bubble = revenue.</div></div>
+<div class="grid cols2">
+<div class="panel"><h2>Top 15 Models by Revenue</h2><div class="chart-wrap h500"><canvas id="modelBar"></canvas></div></div>
+<div class="panel"><h2>Top 15 Companies</h2><div class="table-scroll"><table id="companyTable"><thead><tr><th>#</th><th>Company</th><th>Revenue</th><th>Share</th><th>Tokens</th><th>$/M</th><th>Top Model</th></tr></thead><tbody></tbody></table></div></div>
+</div>
+<div class="panel"><h2 id="modelTitle">All Models</h2><div class="table-scroll"><table id="modelTable"><thead><tr><th>Model</th><th>Tier</th><th>Input Tokens</th><th>Output Tokens</th><th>Requests</th><th>In $/M</th><th>Out $/M</th><th>Cost</th></tr></thead><tbody></tbody></table></div></div>
+<div class="foot">Data from OpenRouter rankings + models API. Cost = uncached prompt*promptPrice + cached*cachePrice + completion*compPrice + requests*reqPrice. Tiers by output price: premium >=$5/M, standard $1-5/M, budget <$1/M, free $0.</div>
 </main>
 <script>
-const fmt = {
-  usd2:n=>'$'+(n||0).toFixed(2),
-  compact:n=>(n||0)>=1e12?(n/1e12).toFixed(2)+'T':(n||0)>=1e9?(n/1e9).toFixed(2)+'B':(n||0)>=1e6?(n/1e6).toFixed(2)+'M':(n||0)>=1e3?(n/1e3).toFixed(1)+'K':(n||0).toLocaleString(),
-  pricePerM:n=>'$'+((n||0)*1e6).toFixed(3),
-};
-let costChart,tokenChart,staticMode=false;
-async function getJSON(u){const r=await fetch(u);if(!r.ok)throw new Error(r.status);return r.json();}
-async function fetchHistory(){ try{return await getJSON('/api/history');}catch(e){ staticMode=true; return getJSON('data/history.json');} }
-async function fetchDates(){ try{return await getJSON('/api/dates');}catch(e){ staticMode=true; return getJSON('data/dates.json');} }
-async function fetchSnapshot(date){
-  if(!staticMode){try{return await getJSON('/api/snapshot?date='+encodeURIComponent(date));}catch(e){staticMode=true;}}
-  return getJSON('data/snapshots/'+date+'.json');
-}
-function arrow(c,p){if(!p)return'';const pct=(c-p)/p*100;return `<span class="${pct>=0?'up':'down'}">${pct>=0?'▲':'▼'} ${Math.abs(pct).toFixed(1)}%</span>`;}
-function renderKPIs(latest,prev){
-  const t=latest.totals,cov=latest.coverage;
-  const cards=[
-    {label:'大盘总费用 (USD)',value:fmt.usd2(t.cost),delta:arrow(t.cost,prev&&prev.totalCost)},
-    {label:'总 Token',value:fmt.compact(t.totalTokens),delta:arrow(t.totalTokens,prev&&prev.totalTokens)},
-    {label:'输入 / 输出 Token',value:`${fmt.compact(t.inputTokens)} / ${fmt.compact(t.outputTokens)}`,delta:t.cachedTokens?`缓存 ${fmt.compact(t.cachedTokens)}`:''},
-    {label:'请求数',value:fmt.compact(t.requests),delta:arrow(t.requests,prev&&prev.totalRequests)},
-    {label:'Token 覆盖率',value:cov?(cov.tokenCoveragePct*100).toFixed(2)+'%':'—',delta:`<span class="tag">${cov?cov.matchedModels:latest.models.length} 计价模型</span>`},
+var PAL=['#4f9eff','#3fb950','#f85149','#d2a8ff','#ffa657','#56d4dd','#f0883e','#a5d6ff','#79c0ff','#ff7b72','#7ee787','#bc8cff'];
+var TL={premium:'Premium',standard:'Standard',budget:'Budget',free:'Free'};
+var TC={premium:'#f85149',standard:'#ffa657',budget:'#3fb950',free:'#8b98a9'};
+var F={usd:function(n){return '$'+Math.round(n||0).toLocaleString('en-US')},pct:function(n){return (n*100).toFixed(1)+'%'},compact:function(n){n=n||0;return n>=1e12?(n/1e12).toFixed(2)+'T':n>=1e9?(n/1e9).toFixed(2)+'B':n>=1e6?(n/1e6).toFixed(2)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':Math.round(n).toLocaleString()},pm:function(n){return '$'+(n||0).toFixed(2)},pm3:function(n){return '$'+(n||0).toFixed(3)}};
+var C={};var sm=false;
+function gj(u){return fetch(u).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
+function fH(){try{return gj('/api/history')}catch(e){sm=true;return gj('data/history.json')}}
+function fD(){try{return gj('/api/dates')}catch(e){sm=true;return gj('data/dates.json')}}
+function fS(d){if(!sm){try{return gj('/api/snapshot?date='+encodeURIComponent(d))}catch(e){sm=true}}return gj('data/snapshots/'+d+'.json')}
+function fAH(){if(!sm){try{return gj('/api/author-history')}catch(e){sm=true}}try{return gj('data/author-history.json')}catch(e){return{series:{},authors:[]}}}
+function arr(c,p){if(!p)return'';var pc=(c-p)/p*100;return '<span class="'+(pc>=0?'up':'down')+'">'+(pc>=0?'▲':'▼')+' '+Math.abs(pc).toFixed(1)+'%</span>'}
+function dst(k){if(C[k]){C[k].destroy();delete C[k]}}
+function rKPI(s,prev){
+  var t=s.totals,c=s.concentration||{},cov=s.coverage;
+  var avg=t.totalTokens>0?(t.cost/t.totalTokens)*1e6:0;
+  var cards=[
+    {label:'Daily Revenue',value:F.usd(t.cost),delta:arr(t.cost,prev&&prev.totalCost)},
+    {label:'Total Tokens',value:F.compact(t.totalTokens),delta:arr(t.totalTokens,prev&&prev.totalTokens)},
+    {label:'Requests',value:F.compact(t.requests),delta:arr(t.requests,prev&&prev.totalRequests)},
+    {label:'Avg $/M Token',value:F.pm(avg),delta:'weighted'},
+    {label:'Top5 Concentration',value:c.top5Share?F.pct(c.top5Share):'-',delta:'HHI '+(c.hhi?Math.round(c.hhi):'-')},
+    {label:'Token Coverage',value:cov?(cov.tokenCoveragePct*100).toFixed(2)+'%':'-',delta:(cov?cov.matchedModels:0)+' priced'}
   ];
-  document.getElementById('kpis').innerHTML=cards.map(c=>`<div class="card"><div class="label">${c.label}</div><div class="value mono">${c.value}</div><div class="delta">${c.delta||''}</div></div>`).join('');
+  document.getElementById('kpis').innerHTML=cards.map(function(c){return '<div class="card"><div class="label">'+c.label+'</div><div class="value mono">'+c.value+'</div><div class="delta">'+(c.delta||'')+'</div></div>'}).join('');
 }
-function renderCharts(h){
-  const labels=h.map(x=>x.date),cost=h.map(x=>+(x.totalCost||0).toFixed(2)),inT=h.map(x=>x.inputTokens||0),outT=h.map(x=>x.outputTokens||0),reqs=h.map(x=>x.totalRequests||0);
-  const common={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b98a9'}}},scales:{x:{ticks:{color:'#8b98a9'},grid:{color:'#232b38'}},y:{ticks:{color:'#8b98a9'},grid:{color:'#232b38'}}}};
-  if(costChart)costChart.destroy();
-  costChart=new Chart(document.getElementById('costChart'),{type:'line',data:{labels,datasets:[{label:'总费用 (USD)',data:cost,borderColor:'#4f9eff',backgroundColor:'rgba(79,158,255,.15)',fill:true,tension:.25,pointRadius:3}]},options:{...common,scales:{...common.scales,y:{...common.scales.y,ticks:{...common.scales.y.ticks,callback:v=>'$'+(v/1000).toFixed(0)+'k'}}}}});
-  if(tokenChart)tokenChart.destroy();
-  tokenChart=new Chart(document.getElementById('tokenChart'),{type:'line',data:{labels,datasets:[
-    {label:'输入 Token',data:inT,borderColor:'#3fb950',tension:.25,pointRadius:2},
-    {label:'输出 Token',data:outT,borderColor:'#f85149',tension:.25,pointRadius:2},
-    {label:'请求数',data:reqs,borderColor:'#d2a8ff',tension:.25,pointRadius:2,yAxisID:'y1'},
-  ]},options:{...common,scales:{x:common.scales.x,y:{...common.scales.y,ticks:{...common.scales.y.ticks,callback:v=>fmt.compact(v)}},y1:{position:'right',ticks:{color:'#8b98a9',callback:v=>fmt.compact(v)},grid:{drawOnChartArea:false}}}}});
+function rCP(s){
+  var au=s.authors||[],top=au.slice(0,10),oth=au.slice(10).reduce(function(a,x){return a+x.cost},0);
+  var lb=top.map(function(a){return a.author}),dt=top.map(function(a){return a.cost});
+  if(oth>0){lb.push('Other');dt.push(oth)}
+  dst('cp');C.cp=new Chart(document.getElementById('companyPie'),{type:'doughnut',data:{labels:lb,datasets:[{data:dt,backgroundColor:PAL,borderColor:'#151a23',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'52%',plugins:{legend:{position:'right',labels:{color:'#8b98a9',boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:function(c){return c.label+': $'+Math.round(c.parsed).toLocaleString()+' ('+(c.parsed/(s.totals.cost||1)*100).toFixed(1)+'%)'}}}}}});
 }
-function renderTable(s){
-  document.getElementById('modelTitle').textContent=`${s.date} 模型明细（按费用降序，共 ${s.models.length} 个）`;
-  document.querySelector('#modelTable tbody').innerHTML=s.models.map(m=>`<tr>
-    <td><b>${m.name||m.id}</b> <span class="tag">${m.variant||''}</span><br><span class="sub">${m.id}</span></td>
-    <td class="mono">${fmt.compact(m.inputTokens)}</td>
-    <td class="mono">${fmt.compact(m.outputTokens)}</td>
-    <td class="mono">${fmt.compact(m.requests)}</td>
-    <td class="mono">${m.inputPricePerToken?fmt.pricePerM(m.inputPricePerToken):(m.priceId==='free'?'<span class="tag">free</span>':'—')}</td>
-    <td class="mono">${m.outputPricePerToken?fmt.pricePerM(m.outputPricePerToken):'—'}</td>
-    <td class="mono"><b>${fmt.usd2(m.cost)}</b></td>
-  </tr>`).join('');
+function rTP(s){
+  var t=s.tiers||{},ord=['premium','standard','budget','free'];
+  var lb=ord.map(function(k){return TL[k]+' ('+(t[k]?t[k].models:0)+')'}),dt=ord.map(function(k){return t[k]?t[k].cost:0});
+  dst('tp');C.tp=new Chart(document.getElementById('tierPie'),{type:'doughnut',data:{labels:lb,datasets:[{data:dt,backgroundColor:ord.map(function(k){return TC[k]}),borderColor:'#151a23',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'52%',plugins:{legend:{position:'right',labels:{color:'#8b98a9',boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:function(c){return c.label+': $'+Math.round(c.parsed).toLocaleString()+' ('+(c.parsed/(s.totals.cost||1)*100).toFixed(1)+'%)'}}}}}});
 }
-async function loadDate(d){
-  const[snap,h]=await Promise.all([fetchSnapshot(d),fetchHistory()]);
-  const i=h.findIndex(x=>x.date===d);
-  renderKPIs(snap,i>0?h[i-1]:null);renderCharts(h);renderTable(snap);
+function rMB(s){
+  var top=(s.models||[]).slice(0,15).reverse();
+  dst('mb');C.mb=new Chart(document.getElementById('modelBar'),{type:'bar',data:{labels:top.map(function(m){return m.id.replace(/^[^/]+\//,'').slice(0,28)}),datasets:[{label:'Revenue',data:top.map(function(m){return m.cost}),backgroundColor:top.map(function(m){return TC[m.tier]||'#4f9eff'})}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '$'+Math.round(c.parsed.x).toLocaleString()}}}},scales:{x:{ticks:{color:'#8b98a9',callback:function(v){return '$'+(v/1000).toFixed(0)+'k'}},grid:{color:'#232b38'}},y:{ticks:{color:'#c9d1d9',font:{size:10}},grid:{display:false}}}}});
 }
-async function init(){
-  const dates=await fetchDates(),sel=document.getElementById('dateSel');
-  sel.innerHTML=dates.map(d=>`<option value="${d}">${d}</option>`).join('');
-  if(dates.length)sel.value=dates[dates.length-1];
-  sel.addEventListener('change',()=>loadDate(sel.value));
-  const btn=document.getElementById('scrapeBtn');
-  if(staticMode) btn.style.display='none';
-  btn.addEventListener('click',async e=>{
-    e.target.disabled=true;e.target.textContent='抓取中...';
-    try{await fetch('/api/scrape',{method:'POST'});const ds=await fetchDates();sel.innerHTML=ds.map(d=>`<option value="${d}">${d}</option>`).join('');sel.value=ds[ds.length-1];await loadDate(sel.value);}
-    catch(err){alert('抓取失败: '+err.message);}
-    finally{e.target.disabled=false;e.target.textContent='🔄 立即抓取';}
+function rBB(s){
+  var au=(s.authors||[]).filter(function(a){return a.totalTokens>0&&a.cost>0});
+  var pts=au.map(function(a){return{x:a.tokenShare*100,y:a.avgPricePerMtoken,r:Math.max(4,Math.sqrt(a.cost)/150),author:a.author,cost:a.cost,share:a.costShare}});
+  dst('bb');C.bb=new Chart(document.getElementById('bubble'),{type:'bubble',data:{datasets:[{data:pts,backgroundColor:'rgba(79,158,255,.55)',borderColor:'#4f9eff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){var p=c.raw;return[p.author,'Revenue: $'+Math.round(p.cost).toLocaleString()+' ('+(p.share*100).toFixed(1)+'%)','Token Share: '+p.x.toFixed(2)+'%','$/M: $'+p.y.toFixed(2)]}}}},scales:{x:{type:'logarithmic',title:{display:true,text:'Token Share (%) - log',color:'#8b98a9'},ticks:{color:'#8b98a9',callback:function(v){return v+'%'}},grid:{color:'#232b38'}},y:{type:'logarithmic',title:{display:true,text:'Avg Price per M (USD) - log',color:'#8b98a9'},ticks:{color:'#8b98a9',callback:function(v){return '$'+v}},grid:{color:'#232b38'}}}}});
+}
+function rCT(){
+  return fAH().then(function(ah){
+    var sr=ah.series||{},au=ah.authors||[],dt=ah.dates||[];
+    dst('ct');
+    var ds=au.map(function(a,i){return{label:a,data:(sr[a]||[]).map(function(p){return p.cost}),backgroundColor:PAL[i%PAL.length],borderColor:PAL[i%PAL.length],fill:true,tension:.25,pointRadius:0,borderWidth:1.5,stack:'s'}});
+    C.ct=new Chart(document.getElementById('companyTrend'),{type:'line',data:{labels:dt,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b98a9',boxWidth:12,font:{size:10}}},tooltip:{callbacks:{label:function(c){return c.dataset.label+': $'+Math.round(c.parsed.y).toLocaleString()}}}},interaction:{mode:'index',intersect:false},scales:{x:{ticks:{color:'#8b98a9',maxRotation:0,autoSkip:true},grid:{color:'#232b38'}},y:{stacked:true,ticks:{color:'#8b98a9',callback:function(v){return '$'+(v/1e6).toFixed(1)+'M'}},grid:{color:'#232b38'}}}}});
+    var el=document.getElementById('trendInsight');
+    if(dt.length<2){el.textContent='Accumulate 2+ days for trend insights.'}
+    else{var last=au[0]?sr[au[0]]:null;if(last&&last.length>=2){var a=last[last.length-2],b=last[last.length-1],chg=((b.cost-a.cost)/a.cost*100).toFixed(1);el.textContent='Top company '+au[0]+': $'+Math.round(b.cost).toLocaleString()+' ('+(chg>=0?'+':'')+chg+'% vs prev day)'}}
   });
-  if(dates.length)await loadDate(sel.value);
-  else document.getElementById('kpis').innerHTML='<div class="card"><div class="label">暂无数据</div><div class="value" style="font-size:15px">正在抓取首日数据…</div></div>';
+}
+function rCTab(s){
+  var tb=document.querySelector('#companyTable tbody');
+  tb.innerHTML=(s.authors||[]).slice(0,15).map(function(a,i){
+    var w=(a.costShare*100).toFixed(1)+'%';
+    return '<tr><td class="mono">'+(i+1)+'</td><td><b>'+a.author+'</b> <span class="sub">'+a.modelCount+'</span></td><td class="mono bar-cell"><div class="bar-bg" style="width:'+(a.costShare*100)+'%"></div><span class="bar-text">'+F.usd(a.cost)+'</span></td><td class="mono">'+w+'</td><td class="mono">'+F.compact(a.totalTokens)+'</td><td class="mono">'+F.pm(a.avgPricePerMtoken)+'</td><td style="font-size:11px;color:var(--muted)">'+(a.topModel||'').replace(/^[^/]+\//,'').slice(0,26)+'</td></tr>'
+  }).join('');
+}
+function rMTab(s){
+  document.getElementById('modelTitle').textContent=s.date+' - All Models ('+s.models.length+')';
+  document.querySelector('#modelTable tbody').innerHTML=s.models.map(function(m){return '<tr><td><b>'+(m.name||m.id).replace(/^[^/]+\//,'')+'</b><br><span class="sub">'+m.id+'</span></td><td><span class="tag tier-'+m.tier+'">'+(TL[m.tier]||m.tier)+'</span></td><td class="mono">'+F.compact(m.inputTokens)+'</td><td class="mono">'+F.compact(m.outputTokens)+'</td><td class="mono">'+F.compact(m.requests)+'</td><td class="mono">'+(m.inputPricePerToken?F.pm3(m.inputPricePerToken*1e6):(m.priceId==='free'?'free':'-'))+'</td><td class="mono">'+(m.outputPricePerToken?F.pm3(m.outputPricePerToken*1e6):'-')+'</td><td class="mono"><b>'+F.usd(m.cost)+'</b></td></tr>'}).join('');
+}
+function load(d){
+  return Promise.all([fS(d),fH()]).then(function(r){
+    var snap=r[0],h=r[1],idx=h.findIndex(function(x){return x.date===d});
+    rKPI(snap,idx>0?h[idx-1]:null);rCP(snap);rTP(snap);rMB(snap);rBB(snap);rCTab(snap);rMTab(snap);rCT();
+  });
+}
+function init(){
+  fD().then(function(dates){
+    var sel=document.getElementById('dateSel');
+    sel.innerHTML=dates.map(function(d){return '<option value="'+d+'">'+d+'</option>'}).join('');
+    if(dates.length)sel.value=dates[dates.length-1];
+    sel.addEventListener('change',function(){load(sel.value)});
+    var btn=document.getElementById('scrapeBtn');
+    if(sm)btn.style.display='none';
+    btn.addEventListener('click',function(e){
+      e.target.disabled=true;e.target.textContent='...';
+      gj('/api/scrape').then(function(){return fD()}).then(function(ds){
+        sel.innerHTML=ds.map(function(d){return '<option value="'+d+'">'+d+'</option>'}).join('');
+        sel.value=ds[ds.length-1];return load(sel.value)
+      }).catch(function(err){alert('Failed: '+err.message)}).finally(function(){e.target.disabled=false;e.target.textContent='Scrape'});
+    });
+    if(dates.length)load(sel.value);
+    else document.getElementById('kpis').innerHTML='<div class="card"><div class="label">No Data</div></div>';
+  });
 }
 init();
 </script>
