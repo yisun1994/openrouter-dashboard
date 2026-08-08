@@ -66,8 +66,14 @@ const fmt = {
   compact:n=>(n||0)>=1e12?(n/1e12).toFixed(2)+'T':(n||0)>=1e9?(n/1e9).toFixed(2)+'B':(n||0)>=1e6?(n/1e6).toFixed(2)+'M':(n||0)>=1e3?(n/1e3).toFixed(1)+'K':(n||0).toLocaleString(),
   pricePerM:n=>'$'+((n||0)*1e6).toFixed(3),
 };
-let costChart,tokenChart;
-async function getJSON(u){const r=await fetch(u);if(!r.ok)throw new Error(await r.text());return r.json();}
+let costChart,tokenChart,staticMode=false;
+async function getJSON(u){const r=await fetch(u);if(!r.ok)throw new Error(r.status);return r.json();}
+async function fetchHistory(){ try{return await getJSON('/api/history');}catch(e){ staticMode=true; return getJSON('data/history.json');} }
+async function fetchDates(){ try{return await getJSON('/api/dates');}catch(e){ staticMode=true; return getJSON('data/dates.json');} }
+async function fetchSnapshot(date){
+  if(!staticMode){try{return await getJSON('/api/snapshot?date='+encodeURIComponent(date));}catch(e){staticMode=true;}}
+  return getJSON('data/snapshots/'+date+'.json');
+}
 function arrow(c,p){if(!p)return'';const pct=(c-p)/p*100;return `<span class="${pct>=0?'up':'down'}">${pct>=0?'▲':'▼'} ${Math.abs(pct).toFixed(1)}%</span>`;}
 function renderKPIs(latest,prev){
   const t=latest.totals,cov=latest.coverage;
@@ -105,18 +111,20 @@ function renderTable(s){
   </tr>`).join('');
 }
 async function loadDate(d){
-  const[snap,h]=await Promise.all([getJSON('/api/snapshot?date='+encodeURIComponent(d)),getJSON('/api/history')]);
+  const[snap,h]=await Promise.all([fetchSnapshot(d),fetchHistory()]);
   const i=h.findIndex(x=>x.date===d);
   renderKPIs(snap,i>0?h[i-1]:null);renderCharts(h);renderTable(snap);
 }
 async function init(){
-  const dates=await getJSON('/api/dates'),sel=document.getElementById('dateSel');
+  const dates=await fetchDates(),sel=document.getElementById('dateSel');
   sel.innerHTML=dates.map(d=>`<option value="${d}">${d}</option>`).join('');
   if(dates.length)sel.value=dates[dates.length-1];
   sel.addEventListener('change',()=>loadDate(sel.value));
-  document.getElementById('scrapeBtn').addEventListener('click',async e=>{
+  const btn=document.getElementById('scrapeBtn');
+  if(staticMode) btn.style.display='none';
+  btn.addEventListener('click',async e=>{
     e.target.disabled=true;e.target.textContent='抓取中...';
-    try{await fetch('/api/scrape',{method:'POST'});const ds=await getJSON('/api/dates');sel.innerHTML=ds.map(d=>`<option value="${d}">${d}</option>`).join('');sel.value=ds[ds.length-1];await loadDate(sel.value);}
+    try{await fetch('/api/scrape',{method:'POST'});const ds=await fetchDates();sel.innerHTML=ds.map(d=>`<option value="${d}">${d}</option>`).join('');sel.value=ds[ds.length-1];await loadDate(sel.value);}
     catch(err){alert('抓取失败: '+err.message);}
     finally{e.target.disabled=false;e.target.textContent='🔄 立即抓取';}
   });
