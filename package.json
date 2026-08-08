@@ -1,0 +1,16 @@
+{
+  "name": "or-dashboard",
+  "version": "1.0.0",
+  "description": "Daily OpenRouter rankings token + price scraper with marketplace revenue dashboard",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "scrape": "node scraper.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
