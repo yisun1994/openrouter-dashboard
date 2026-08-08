@@ -6,10 +6,11 @@
 
 - 每日 23:55 UTC 自动抓取，启动时也会立即抓一次
 - 费用 = (输入−缓存)×输入价 + 缓存×缓存读价 + 输出×输出价 + 请求数×固定费
-- 历史趋势图（总费用、Token、请求数）
-- 任意日期模型明细（按费用降序）
+- 历史趋势图（总费用、Token、请求数）与任意日期模型明细
 - 一键手动抓取，JSON API
 - 自动处理 batch 半价变体、缓存价、Claude 命名倒置、带日期版本后缀
+- 自带 GitHub Actions：每天自动抓取、提交数据、部署到 GitHub Pages（无需自己跑服务器）
+- 自带 Dockerfile 与 docker-compose
 
 ## 快速开始
 
@@ -20,6 +21,26 @@ npm start
 ```
 
 启动时立即抓取当天数据，之后每天 23:55 UTC 自动抓取。手动抓一次：`npm run scrape`。自定义端口：`PORT=8080 npm start`。
+
+## Docker
+
+```bash
+docker compose up -d --build
+# 打开 http://localhost:3000，数据持久化在 ./data
+```
+
+或直接 `docker build -t openrouter-dashboard . && docker run -p 3000:3000 -v ./data:/app/data openrouter-dashboard`。
+
+## GitHub Pages 自动部署（推荐，免服务器）
+
+仓库已自带 `.github/workflows/daily-scrape.yml`：每天 23:55 UTC 运行 `node scraper.js` 抓取数据，`node export.js` 导出为静态 JSON，提交到仓库，并把 `public/` 部署到 GitHub Pages。
+
+首次启用：
+1. 推送 workflow 文件后，到仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
+2. 到 **Actions** 标签，手动触发一次 "Daily scrape & deploy"（Run workflow），它会抓当天数据并生成站点。
+3. 之后每天自动运行，站点地址为 `https://<你的用户名>.github.io/openrouter-dashboard/`。
+
+> 前端会自动探测：有 Node API（本地 `npm start` / Docker）时走 API；纯静态托管（Pages）时自动回退读 `public/data/*.json`。
 
 ## 数据来源（已验证）
 
@@ -35,14 +56,17 @@ npm start
 ## 目录结构
 
 ```
-├── server.js          # HTTP 服务 + 定时调度
-├── scraper.js         # 抓取 + 价格匹配 + 费用计算
-├── store.js           # JSON 文件存储
-├── public/index.html  # 看板前端
-└── data/daily/        # 每日快照 (gitignored)
+├── server.js                 # HTTP 服务 + 定时调度 + API
+├── scraper.js                # 抓取 + 价格匹配 + 费用计算
+├── store.js                  # JSON 文件存储
+├── export.js                 # 导出 public/data 供静态托管
+├── public/index.html         # 看板前端
+├── .github/workflows/        # 每日抓取 + Pages 部署
+├── Dockerfile / docker-compose.yml
+└── data/daily/               # 每日快照 (gitignored；CI 用 -f 提交)
 ```
 
-## API
+## API（本地/Docker 模式）
 
 - `GET /api/history?days=30` — 每日汇总序列
 - `GET /api/latest` — 最新一天完整快照
