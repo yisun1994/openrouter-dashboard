@@ -19,6 +19,29 @@ function run() {
     const snap = store.loadSnapshot(d);
     fs.writeFileSync(path.join(SNAP_DIR, `${d}.json`), JSON.stringify(snap));
   }
+
+  const topN = 8;
+  const series = {};
+  let topAuthors = [];
+  for (const d of dates) {
+    const snap = store.loadSnapshot(d);
+    if (!snap) continue;
+    if (!topAuthors.length && snap.authors) {
+      topAuthors = snap.authors.slice(0, topN).map(a => a.author);
+    }
+    if (snap.authors) {
+      for (const a of snap.authors) {
+        if (!topAuthors.includes(a.author)) continue;
+        if (!series[a.author]) series[a.author] = [];
+        series[a.author].push({ date: d, cost: a.cost, tokens: a.totalTokens, share: a.costShare });
+      }
+    }
+  }
+  fs.writeFileSync(
+    path.join(OUT_DIR, 'author-history.json'),
+    JSON.stringify({ dates, authors: topAuthors, series })
+  );
+
   console.log(`Exported ${dates.length} snapshots to public/data`);
 }
 
