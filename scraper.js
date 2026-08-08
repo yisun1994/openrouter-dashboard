@@ -48,10 +48,8 @@ function toNum(v) {
   const n = typeof v === 'number' ? v : Number(v);
   return Number.isFinite(n) ? n : 0;
 }
-// Some internal/special models list negative placeholder prices; clamp to 0.
 const nonNeg = (n) => (n > 0 ? n : 0);
 
-// Build price map: id -> { prompt, completion, request, cacheRead, reasoning }.
 function buildPriceMap(modelsJSON) {
   const map = new Map();
   const byTail = new Map();
@@ -77,7 +75,6 @@ function buildPriceMap(modelsJSON) {
 
 const stripDate = (s) => s.replace(/:[\w-]+$/, '').replace(/-(\d{4}-\d{2}-\d{2}|\d{8})$/, '');
 
-// Rankings uses "claude-4.6-sonnet-DATE" while models API uses "claude-sonnet-4.6".
 function reorderClaude(slug) {
   return slug.replace(
     /^(anthropic\/claude)-([0-9][^-]*)-(sonnet|opus|haiku|fable|fast)$/,
@@ -85,13 +82,10 @@ function reorderClaude(slug) {
   );
 }
 
-// Resolve a dated permaslug + variant to a /api/v1/models id.
 function resolvePriceId(permaslug, variant, map, byTail) {
   if (variant === 'free') return { id: null, free: true };
   const wantBatch = variant === 'batch';
   const root = stripDate(permaslug);
-
-  // Ordered candidate base ids (exact, claude-reorder, progressively stripping trailing segments).
   const cands = new Set([root, reorderClaude(root)]);
   let s = root;
   for (let i = 0; i < 4; i++) {
@@ -101,13 +95,10 @@ function resolvePriceId(permaslug, variant, map, byTail) {
     cands.add(s);
     cands.add(reorderClaude(s));
   }
-
   for (const c of cands) {
     if (wantBatch && map.has(c + ':batch')) return { id: c + ':batch' };
     if (map.has(c)) return { id: c };
   }
-
-  // Slug without author prefix -> match by tail.
   if (!root.includes('/')) {
     const tailCands = byTail.get(root) || [];
     const exact = tailCands.find(x => !x.includes(':'));
@@ -127,6 +118,66 @@ function extractRows(rankingsJSON) {
   if (Array.isArray(rankingsJSON.results)) return rankingsJSON.results;
   if (rankingsJSON.data && typeof rankingsJSON.data === 'object') return extractRows(rankingsJSON.data);
   return [];
+}
+
+function priceTier(outputPricePerToken) {
+  const p = outputPricePerToken * 1e6;
+  if (p <= 0) return 'free';
+  if (p >= 5) return 'premium';
+  if (p >= 1) return 'standard';
+  return 'budget';
+}
+
+function aggregateAuthors(models, totals) {
+  const byAuthor = new Map();
+  for (const m of models) {
+    const author = m.author || 'unknown';
+    if (!byAuthor.has(author)) {
+      byAuthor.set(author, {
+        author,
+        inputTokens: 0, outputTokens: 0, totalTokens: 0, requests: 0, cost: 0,
+        modelCount: 0, topModel: null, topModelCost: 0,
+      });
+    }
+    const a = byAuthor.get(author);
+    a.inputTokens += m.inputTokens;
+    a.outputTokens += m.outputTokens;
+    a.totalTokens += m.inputTokens + m.outputTokens;
+    a.requests += m.requests;
+    a.cost += m.cost;
+    a.modelCount += 1;
+    if (m.cost > a.topModelCost) { a.topModelCost = m.cost; a.topModel = m.id; }
+  }
+  const list = Array.from(byAuthor.values());
+  list.sort((a, b) => b.cost - a.cost);
+  const totalCost = totals.cost || 1;
+  const totalTokens = totals.totalTokens || 1;
+  for (const a of list) {
+    a.costShare = a.cost / totalCost;
+    a.tokenShare = a.totalTokens / totalTokens;
+    a.avgPricePerMtoken = a.totalTokens > 0 ? (a.cost / a.totalTokens) * 1e6 : 0;
+  }
+  return list;
+}
+
+function aggregateTiers(models) {
+  const tiers = { premium:{cost:0,tokens:0,models:0}, standard:{cost:0,tokens:0,models:0}, budget:{cost:0,tokens:0,models:0}, free:{cost:0,tokens:0,models:0} };
+  for (const m of models) {
+    const t = m.tier || priceTier(m.outputPricePerToken);
+    if (!tiers[t]) continue;
+    tiers[t].cost += m.cost;
+    tiers[t].tokens += m.inputTokens + m.outputTokens;
+    tiers[t].models += 1;
+  }
+  return tiers;
+}
+
+function concentration(authors) {
+  const total = authors.reduce((s, a) => s + a.cost, 0) || 1;
+  const top5 = authors.slice(0, 5).reduce((s, a) => s + a.cost, 0);
+  const top10 = authors.slice(0, 10).reduce((s, a) => s + a.cost, 0);
+  const hhi = authors.reduce((s, a) => s + Math.pow((a.cost / total) * 100, 2), 0);
+  return { top5Share: top5/total, top10Share: top10/total, hhi, top5Revenue: top5, totalRevenue: total };
 }
 
 function compute(rankingsJSON, priceInfo) {
@@ -153,7 +204,6 @@ function compute(rankingsJSON, priceInfo) {
     const { id: priceId, free } = resolvePriceId(slug, variant, map, byTail);
     const price = priceId ? map.get(priceId) : null;
 
-    // Uncached prompt tokens are billed at standard prompt price; cached reads at cacheRead price.
     const uncachedPrompt = Math.max(0, promptTokens - cachedTokens);
     let cost = 0;
     if (price) {
@@ -162,7 +212,6 @@ function compute(rankingsJSON, priceInfo) {
            + cachedTokens * cachePrice
            + completionTokens * price.completion
            + requests * price.request;
-      // Reasoning tokens: only added when a separate internal_reasoning price exists.
       if (price.reasoning && reasoningTokens) cost += reasoningTokens * price.reasoning;
     } else if (free) {
       cost = 0;
@@ -181,6 +230,7 @@ function compute(rankingsJSON, priceInfo) {
       requests,
       inputPricePerToken: price ? price.prompt : 0,
       outputPricePerToken: price ? price.completion : 0,
+      tier: price ? priceTier(price.completion) : 'free',
       cost,
     };
     models.push(model);
@@ -199,6 +249,10 @@ function compute(rankingsJSON, priceInfo) {
   models.sort((a, b) => b.cost - a.cost);
 
   const allTokens = totals.totalTokens || 1;
+  const authors = aggregateAuthors(models, totals);
+  const tiers = aggregateTiers(models);
+  const conc = concentration(authors);
+
   return {
     totals,
     coverage: {
@@ -209,6 +263,9 @@ function compute(rankingsJSON, priceInfo) {
       tokenCoveragePct: coveredTokens / allTokens,
     },
     models,
+    authors,
+    tiers,
+    concentration: conc,
     missingPrice,
     rankingRowCount: rows.length,
   };
@@ -227,7 +284,7 @@ async function run() {
   store.saveRawSample('models', { count: (modelsJSON.data || []).length, sample: (modelsJSON.data || []).slice(0, 3) });
 
   const priceInfo = buildPriceMap(modelsJSON);
-  const { totals, coverage, models, missingPrice, rankingRowCount } = compute(rankings, priceInfo);
+  const { totals, coverage, models, authors, tiers, concentration: conc, missingPrice, rankingRowCount } = compute(rankings, priceInfo);
 
   const rowDate = (rankings.data && rankings.data[0] && rankings.data[0].date) || null;
   const date = rowDate ? String(rowDate).slice(0, 10) : store.todayUTC();
@@ -239,6 +296,9 @@ async function run() {
     rankingsDate: rowDate,
     totals,
     coverage,
+    authors,
+    tiers,
+    concentration: conc,
     priceModelCount: priceInfo.map.size,
     rankingRowCount,
     missingPrice,
