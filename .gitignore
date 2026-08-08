@@ -1,4 +1,8 @@
 node_modules/
+*.log
+
+# Local runtime data — committed to the repo by the GitHub Actions workflow
+# using `git add -f`. Do not commit manual local runs.
 data/daily/
 data/raw/
-*.log
+public/data/
