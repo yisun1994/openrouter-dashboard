@@ -42,7 +42,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 10px;
 <div class="ticker-meta" id="tickerMeta"></div>
 </header>
 <div class="sub-bar" id="subBar"></div>
-<nav><label style="color:var(--muted);font-size:12px">日期</label><select id="dateSel"></select><button id="scrapeBtn">抓取</button></nav>
+<nav><label style="color:var(--muted);font-size:12px">日期</label><select id="dateSel"></select><button id="scrapeBtn">🔄 立即抓取</button></nav>
 <main>
 <div class="grid kpis" id="kpis"></div>
 <div class="panel">
@@ -62,7 +62,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 10px;
 <div class="panel"><h2>Top 15 公司（含日涨跌幅）</h2><div style="max-height:480px;overflow:auto"><table id="companyTable"><thead><tr><th>#</th><th>公司</th><th>日收入</th><th>涨跌%</th><th>份额</th><th>均价/M</th><th>主力模型</th></tr></thead><tbody></tbody></table></div></div>
 </div>
 <div class="panel"><h2 id="modelTitle">全模型明细</h2><div style="max-height:560px;overflow:auto"><table id="modelTable"><thead><tr><th>模型</th><th>档位</th><th>输入</th><th>输出</th><th>请求</th><th>入$/M</th><th>出$/M</th><th>费用</th></tr></thead><tbody></tbody></table></div></div>
-<div class="foot">ORX 指数：首日=1000点。日K开盘=前日收盘。每日23:55 UTC自动抓取。注：UTC日中数据为当日累计，非全天完整值。</div>
+<div class="foot">ORX 指数：首日=1000点。日K开盘=前日收盘。每日23:55 UTC自动抓取。注：UTC白天数据为当日累计，非全天完整值。</div>
 </main>
 <script>
 var PAL=['#4f9eff','#3fb950','#f85149','#d2a8ff','#ffa657','#56d4dd','#f0883e','#a5d6ff','#79c0ff','#ff7b72','#7ee787','#bc8cff'];
@@ -181,8 +181,15 @@ function init(){
     var sel=document.getElementById('dateSel');sel.innerHTML=dates.map(function(d){return'<option value="'+d+'">'+d+'</option>'}).join('');if(dates.length)sel.value=dates[dates.length-1];
     sel.addEventListener('change',function(){load(sel.value)});
     var tabs=document.querySelectorAll('.ktab');tabs.forEach(function(tab){tab.addEventListener('click',function(){tabs.forEach(function(t){t.classList.remove('active')});tab.classList.add('active');chartMode=tab.getAttribute('data-mode');if(marketData)renderIdxChart(marketData)})});
-    var btn=document.getElementById('scrapeBtn');if(sm)btn.style.display='none';
-    btn.addEventListener('click',function(e){e.target.disabled=true;e.target.textContent='...';gj('/api/scrape').then(function(){return fD()}).then(function(ds){sel.innerHTML=ds.map(function(d){return'<option value="'+d+'">'+d+'</option>'}).join('');sel.value=ds[ds.length-1];return load(sel.value)}).catch(function(err){alert('失败: '+err.message)}).finally(function(){e.target.disabled=false;e.target.textContent='抓取'})});
+    var btn=document.getElementById('scrapeBtn');
+    if(sm){btn.textContent='🔄 刷新';btn.title='静态模式：重新加载最新数据（GitHub Pages 数据每日自动更新一次）'}
+    btn.addEventListener('click',function(e){
+      e.target.disabled=true;e.target.textContent=sm?'刷新中...':'抓取中...';
+      var p=sm?Promise.resolve():gj('/api/scrape');
+      p.then(function(){return Promise.all([fD(),fH(),fM()])}).then(function(r){
+        var ds=r[0];sel.innerHTML=ds.map(function(d){return'<option value="'+d+'">'+d+'</option>'}).join('');sel.value=ds[ds.length-1];return load(sel.value);
+      }).catch(function(err){alert((sm?'刷新':'抓取')+'失败: '+err.message)}).finally(function(){e.target.disabled=false;e.target.textContent=sm?'🔄 刷新':'🔄 立即抓取'});
+    });
     if(dates.length)load(sel.value);
   });
 }
