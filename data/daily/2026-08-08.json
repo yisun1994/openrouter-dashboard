@@ -1,23 +1,23 @@
 {
   "date": "2026-08-08",
-  "fetchedAt": "2026-08-09T01:09:37.802Z",
+  "fetchedAt": "2026-08-09T02:38:46.479Z",
   "rankingsView": "day",
   "rankingsDate": "2026-08-08 00:00:00",
   "totals": {
-    "inputTokens": 8496450145829,
-    "outputTokens": 268782489497,
+    "inputTokens": 8496450953378,
+    "outputTokens": 268787509106,
     "cachedTokens": 0,
     "reasoningTokens": 0,
-    "totalTokens": 8765232635326,
-    "requests": 510140420,
-    "cost": 5421588.970285386
+    "totalTokens": 8765238462484,
+    "requests": 510140463,
+    "cost": 5421590.534431727
   },
   "coverage": {
     "matchedModels": 354,
     "freeModels": 19,
     "missingModels": 128,
-    "matchedTokens": 8709900579318,
-    "tokenCoveragePct": 0.9936873260174524
+    "matchedTokens": 8709906406476,
+    "tokenCoveragePct": 0.9936873302141378
   },
   "authors": [
     {
@@ -30,8 +30,8 @@
       "modelCount": 23,
       "topModel": "anthropic/claude-opus-5-20260723",
       "topModelCost": 866258.8019900001,
-      "costShare": 0.4647473418546735,
-      "tokenShare": 0.06248088532229028,
+      "costShare": 0.46474720777356765,
+      "tokenShare": 0.0624808437848019,
       "avgPricePerMtoken": 4.600794992257116
     },
     {
@@ -44,8 +44,8 @@
       "modelCount": 87,
       "topModel": "openai/gpt-5.6-sol-20260709",
       "topModelCost": 346716.160655,
-      "costShare": 0.14600141152262266,
-      "tokenShare": 0.12038817587546591,
+      "costShare": 0.14600136940074493,
+      "tokenShare": 0.12038809584102929,
       "avgPricePerMtoken": 0.7501297027578407
     },
     {
@@ -58,37 +58,37 @@
       "modelCount": 8,
       "topModel": "moonshotai/kimi-k3-20260715",
       "topModelCost": 512503.333059,
-      "costShare": 0.10059130499517341,
-      "tokenShare": 0.02329094658300614,
+      "costShare": 0.10059127597425775,
+      "tokenShare": 0.02329093109911186,
       "avgPricePerMtoken": 2.6713847664801764
     },
     {
       "author": "deepseek",
-      "inputTokens": 2272161824566,
-      "outputTokens": 110183456582,
-      "totalTokens": 2382345281148,
-      "requests": 140933644,
-      "cost": 471465.88811842335,
+      "inputTokens": 2272162592441,
+      "outputTokens": 110187689759,
+      "totalTokens": 2382350282200,
+      "requests": 140933675,
+      "cost": 471467.1809104834,
       "modelCount": 12,
       "topModel": "deepseek/deepseek-v4-flash-20260731",
-      "topModelCost": 180596.0386083,
-      "costShare": 0.08696083209229451,
-      "tokenShare": 0.27179487188355667,
-      "avgPricePerMtoken": 0.19789989799095548
+      "topModelCost": 180597.33140036,
+      "costShare": 0.08696104545635906,
+      "tokenShare": 0.2717952617486302,
+      "avgPricePerMtoken": 0.19790002521170116
     },
     {
       "author": "google",
-      "inputTokens": 527064750398,
-      "outputTokens": 37459111858,
-      "totalTokens": 564523862256,
-      "requests": 119518437,
-      "cost": 376470.21173385,
+      "inputTokens": 527064790072,
+      "outputTokens": 37459898290,
+      "totalTokens": 564524688362,
+      "requests": 119518449,
+      "cost": 376470.48308813,
       "modelCount": 44,
       "topModel": "google/gemini-3.6-flash-20260721",
       "topModelCost": 135820.4277825,
-      "costShare": 0.06943909134336923,
-      "tokenShare": 0.06440489211670582,
-      "avgPricePerMtoken": 0.6668809538526265
+      "costShare": 0.06943912136064521,
+      "tokenShare": 0.06440494354810948,
+      "avgPricePerMtoken": 0.6668804586394267
     },
     {
       "author": "tencent",
@@ -100,8 +100,8 @@
       "modelCount": 3,
       "topModel": "tencent/hy3-20260706",
       "topModelCost": 200582.07905379598,
-      "costShare": 0.03703448815302387,
-      "tokenShare": 0.16754532656854923,
+      "costShare": 0.03703447746845469,
+      "tokenShare": 0.16754521518389104,
       "avgPricePerMtoken": 0.13672161206115435
     },
     {
@@ -114,8 +114,8 @@
       "modelCount": 2,
       "topModel": "xiaomi/mimo-v2.5-20260422",
       "topModelCost": 89573.80437124001,
-      "costShare": 0.021039588206792005,
-      "tokenShare": 0.07869863097676291,
+      "costShare": 0.021039582136803004,
+      "tokenShare": 0.0786985786576664,
       "avgPricePerMtoken": 0.16536104186727826
     },
     {
@@ -128,8 +128,8 @@
       "modelCount": 10,
       "topModel": "x-ai/grok-4.5-20260708",
       "topModelCost": 83578.674008,
-      "costShare": 0.01856675128992697,
-      "tokenShare": 0.005981605128504384,
+      "costShare": 0.01856674593335939,
+      "tokenShare": 0.005981601151914548,
       "avgPricePerMtoken": 1.919911994894973
     },
     {
@@ -142,8 +142,8 @@
       "modelCount": 56,
       "topModel": "qwen/qwen3.8-max-20260803",
       "topModelCost": 59661.262967999995,
-      "costShare": 0.01747822274120749,
-      "tokenShare": 0.016603917912623334,
+      "costShare": 0.017478217698683903,
+      "tokenShare": 0.01660390687428667,
       "avgPricePerMtoken": 0.651103206431987
     },
     {
@@ -156,8 +156,8 @@
       "modelCount": 13,
       "topModel": "minimax/minimax-m3-20260531",
       "topModelCost": 70077.556899,
-      "costShare": 0.014585539355524493,
-      "tokenShare": 0.029019550510257463,
+      "costShare": 0.014585535147549386,
+      "tokenShare": 0.029019531217969338,
       "avgPricePerMtoken": 0.3108815540275142
     },
     {
@@ -170,8 +170,8 @@
       "modelCount": 13,
       "topModel": "z-ai/glm-5.2-20260616",
       "topModelCost": 33664.28425052,
-      "costShare": 0.011059763513991303,
-      "tokenShare": 0.04138091569277668,
+      "costShare": 0.011059760323213886,
+      "tokenShare": 0.04138088818261424,
       "avgPricePerMtoken": 0.1653137151787212
     },
     {
@@ -184,8 +184,8 @@
       "modelCount": 2,
       "topModel": "stepfun/step-3.7-flash-20260528",
       "topModelCost": 34578.303091249996,
-      "costShare": 0.006384176325456123,
-      "tokenShare": 0.018754117962082605,
+      "costShare": 0.006384174483600679,
+      "tokenShare": 0.01875410549428621,
       "avgPricePerMtoken": 0.21055781831205414
     },
     {
@@ -198,8 +198,8 @@
       "modelCount": 2,
       "topModel": "meta/muse-spark-1.2-20260805",
       "topModelCost": 8351.51249775,
-      "costShare": 0.001824661959200361,
-      "tokenShare": 0.0008570056862752754,
+      "costShare": 0.0018246614327795056,
+      "tokenShare": 0.0008570051165352094,
       "avgPricePerMtoken": 1.3169274690303128
     },
     {
@@ -212,8 +212,8 @@
       "modelCount": 4,
       "topModel": "aion-labs/aion-3.0-20260707",
       "topModelCost": 3427.366653,
-      "costShare": 0.0007286831965042979,
-      "tokenShare": 0.00019226721321781792,
+      "costShare": 0.0007286829862768474,
+      "tokenShare": 0.00019226708539797199,
       "avgPricePerMtoken": 2.344210815225837
     },
     {
@@ -226,8 +226,8 @@
       "modelCount": 19,
       "topModel": "nvidia/nemotron-3-ultra-550b-a55b-20260604",
       "topModelCost": 2435.8422438,
-      "costShare": 0.0006602041678219635,
-      "tokenShare": 0.047455842963320206,
+      "costShare": 0.0006602039773509335,
+      "tokenShare": 0.04745581141452708,
       "avgPricePerMtoken": 0.008605016580772852
     },
     {
@@ -240,8 +240,8 @@
       "modelCount": 3,
       "topModel": "thinkingmachines/inkling-20260715",
       "topModelCost": 3058.7276488499997,
-      "costShare": 0.0006097360284259966,
-      "tokenShare": 0.0003839968911304106,
+      "costShare": 0.0006097358525151875,
+      "tokenShare": 0.00038399663584807396,
       "avgPricePerMtoken": 0.9821488022729062
     },
     {
@@ -254,8 +254,8 @@
       "modelCount": 8,
       "topModel": "meta-llama/llama-3.1-70b-instruct",
       "topModelCost": 1348.9731084,
-      "costShare": 0.0005526701644966781,
-      "tokenShare": 0.001926533351087943,
+      "costShare": 0.0005526700050495545,
+      "tokenShare": 0.0019265320703225335,
       "avgPricePerMtoken": 0.1774404501205263
     },
     {
@@ -268,8 +268,8 @@
       "modelCount": 22,
       "topModel": "mistralai/mistral-large-2512",
       "topModelCost": 749.6018785,
-      "costShare": 0.000490113892428455,
-      "tokenShare": 0.003407202752684185,
+      "costShare": 0.0004901137510290175,
+      "tokenShare": 0.0034072004875651167,
       "avgPricePerMtoken": 0.08897380771793473
     },
     {
@@ -282,8 +282,8 @@
       "modelCount": 8,
       "topModel": "perplexity/sonar-pro",
       "topModelCost": 800.433573,
-      "costShare": 0.00025528543653635644,
-      "tokenShare": 0.0012637162190491055,
+      "costShare": 0.0002552853628856853,
+      "tokenShare": 0.0012637153789266027,
       "avgPricePerMtoken": 0.12495096731362078
     },
     {
@@ -296,8 +296,8 @@
       "modelCount": 1,
       "topModel": "sakana/fugu-ultra-20260615",
       "topModelCost": 922.972115,
-      "costShare": 0.000170240149162657,
-      "tokenShare": 0.00001927434787288068,
+      "costShare": 0.00017024010004782535,
+      "tokenShare": 0.00001927433505923381,
       "avgPricePerMtoken": 5.463179123054891
     },
     {
@@ -310,8 +310,8 @@
       "modelCount": 4,
       "topModel": "poolside/laguna-s-2.1-20260720",
       "topModelCost": 709.2120432600001,
-      "costShare": 0.0001346115826190313,
-      "tokenShare": 0.030945076028197387,
+      "costShare": 0.00013461154378315593,
+      "tokenShare": 0.03094505545581386,
       "avgPricePerMtoken": 0.002690630235885089
     },
     {
@@ -324,8 +324,8 @@
       "modelCount": 6,
       "topModel": "inclusionai/ling-2.6-flash-20260421",
       "topModelCost": 401.73909659000003,
-      "costShare": 0.00011797504425502985,
-      "tokenShare": 0.0063711318111436535,
+      "costShare": 0.0001179750102188494,
+      "tokenShare": 0.006371127575595259,
       "avgPricePerMtoken": 0.011453459929405461
     },
     {
@@ -338,8 +338,8 @@
       "modelCount": 5,
       "topModel": "amazon/nova-micro-v1",
       "topModelCost": 369.94792779000005,
-      "costShare": 0.00008374716413186517,
-      "tokenShare": 0.001094854038137355,
+      "costShare": 0.00008374713997053842,
+      "tokenShare": 0.0010948533102749592,
       "avgPricePerMtoken": 0.047312623152853596
     },
     {
@@ -352,8 +352,8 @@
       "modelCount": 1,
       "topModel": "perceptron/perceptron-mk1-20260512",
       "topModelCost": 371.44916624999996,
-      "costShare": 0.0000685129706965682,
-      "tokenShare": 0.00028081253737408134,
+      "costShare": 0.00006851295093035536,
+      "tokenShare": 0.00028081235068902645,
       "avgPricePerMtoken": 0.15091049619682817
     },
     {
@@ -366,8 +366,8 @@
       "modelCount": 2,
       "topModel": "morph/morph-v3-large",
       "topModelCost": 299.66510619999997,
-      "costShare": 0.00005673524376079888,
-      "tokenShare": 0.0000254283781472858,
+      "costShare": 0.000056735227392498214,
+      "tokenShare": 0.000025428361242420317,
       "avgPricePerMtoken": 1.3800582128100214
     },
     {
@@ -380,8 +380,8 @@
       "modelCount": 2,
       "topModel": "relace/relace-apply-3",
       "topModelCost": 300.52873220000004,
-      "costShare": 0.00005586219111406702,
-      "tokenShare": 0.00003415974948494495,
+      "costShare": 0.000055862174997644856,
+      "tokenShare": 0.00003415972677543644,
       "avgPricePerMtoken": 1.011501267336328
     },
     {
@@ -394,8 +394,8 @@
       "modelCount": 4,
       "topModel": "nousresearch/hermes-3-llama-3.1-405b",
       "topModelCost": 80.401328,
-      "costShare": 0.000044545154799384846,
-      "tokenShare": 0.000060048179540465135,
+      "costShare": 0.00004454514194796413,
+      "tokenShare": 0.000060048139620247186,
       "avgPricePerMtoken": 0.45884263904499395
     },
     {
@@ -408,8 +408,8 @@
       "modelCount": 2,
       "topModel": "nex-agi/nex-n2-mini",
       "topModelCost": 160.687298275,
-      "costShare": 0.00003909996560728605,
-      "tokenShare": 0.0007086484769344608,
+      "costShare": 0.00003909995432681997,
+      "tokenShare": 0.0007086480058227325,
       "avgPricePerMtoken": 0.034127828790268835
     },
     {
@@ -422,8 +422,8 @@
       "modelCount": 3,
       "topModel": "kwaipilot/kat-coder-pro-v2.5-20260710",
       "topModelCost": 90.3323439,
-      "costShare": 0.000034815759435939697,
-      "tokenShare": 0.00005810471018731357,
+      "costShare": 0.0000348157493914809,
+      "tokenShare": 0.00005810467155912014,
       "avgPricePerMtoken": 0.37061899627737455
     },
     {
@@ -436,8 +436,8 @@
       "modelCount": 1,
       "topModel": "meituan/longcat-2.0-20260720",
       "topModelCost": 154.8510138,
-      "costShare": 0.000028561924308299018,
-      "tokenShare": 0.000056563158175842345,
+      "costShare": 0.000028561916068091812,
+      "tokenShare": 0.000056563120572477526,
       "avgPricePerMtoken": 0.31233234065345994
     },
     {
@@ -450,8 +450,8 @@
       "modelCount": 7,
       "topModel": "microsoft/wizardlm-2-8x22b",
       "topModelCost": 134.91350288,
-      "costShare": 0.000025728796862787143,
-      "tokenShare": 0.00003153081834772329,
+      "costShare": 0.00002572878943994633,
+      "tokenShare": 0.00003153079738593643,
       "avgPricePerMtoken": 0.504716354547578
     },
     {
@@ -464,8 +464,8 @@
       "modelCount": 4,
       "topModel": "thedrummer/cydonia-24b-v4.1",
       "topModelCost": 71.5112144,
-      "costShare": 0.000024415192414159027,
-      "tokenShare": 0.00004527962126189921,
+      "costShare": 0.000024415185370297335,
+      "tokenShare": 0.00004527959115986509,
       "avgPricePerMtoken": 0.3335189445411452
     },
     {
@@ -478,8 +478,8 @@
       "modelCount": 5,
       "topModel": "bytedance-seed/seed-2.0-lite-20260309",
       "topModelCost": 72.82332349999999,
-      "costShare": 0.000023244927961288482,
-      "tokenShare": 0.0001170356125935095,
+      "costShare": 0.000023244921255051855,
+      "tokenShare": 0.00011703553478786745,
       "avgPricePerMtoken": 0.12284947757441074
     },
     {
@@ -492,8 +492,8 @@
       "modelCount": 1,
       "topModel": "inception/mercury-2-20260304",
       "topModelCost": 96.23347974999999,
-      "costShare": 0.000017750050820421077,
-      "tokenShare": 0.00003642444488161901,
+      "costShare": 0.000017750045699474215,
+      "tokenShare": 0.0000364244206665339,
       "avgPricePerMtoken": 0.30141842843721245
     },
     {
@@ -506,8 +506,8 @@
       "modelCount": 3,
       "topModel": "sao10k/l3-lunaris-8b",
       "topModelCost": 37.85176907,
-      "costShare": 0.000017594977117009047,
-      "tokenShare": 0.00011434977903044806,
+      "costShare": 0.000017594972040801445,
+      "tokenShare": 0.00011434970301035659,
       "avgPricePerMtoken": 0.0951736047348544
     },
     {
@@ -520,8 +520,8 @@
       "modelCount": 2,
       "topModel": "ibm-granite/granite-4.1-8b-20260429",
       "topModelCost": 41.6563412,
-      "costShare": 0.000007769842087048254,
-      "tokenShare": 0.00008655510168005747,
+      "costShare": 0.000007769839845423774,
+      "tokenShare": 0.0000865550441379546,
       "avgPricePerMtoken": 0.05552424520961464
     },
     {
@@ -534,8 +534,8 @@
       "modelCount": 1,
       "topModel": "arcee-ai/trinity-large-thinking",
       "topModelCost": 42.09275427,
-      "costShare": 0.000007763914693773676,
-      "tokenShare": 0.00001717034461737392,
+      "costShare": 0.000007763912453859267,
+      "tokenShare": 0.000017170333202475007,
       "avgPricePerMtoken": 0.2796822373832545
     },
     {
@@ -548,8 +548,8 @@
       "modelCount": 9,
       "topModel": "cohere/command-a-03-2025",
       "topModelCost": 19.882490000000004,
-      "costShare": 0.0000071168214243045,
-      "tokenShare": 0.00349360787157945,
+      "costShare": 0.000007116819371078585,
+      "tokenShare": 0.003493605549017988,
       "avgPricePerMtoken": 0.00126001307924704
     },
     {
@@ -562,8 +562,8 @@
       "modelCount": 1,
       "topModel": "anthracite-org/magnum-v4-72b",
       "topModelCost": 36.089278,
-      "costShare": 0.000006656586878459048,
-      "tokenShare": 0.0000013144253529069621,
+      "costShare": 0.000006656584958012282,
+      "tokenShare": 0.0000013144244790728682,
       "avgPricePerMtoken": 3.132411569445105
     },
     {
@@ -576,8 +576,8 @@
       "modelCount": 1,
       "topModel": "ai21/jamba-large-1.7",
       "topModelCost": 35.783744,
-      "costShare": 0.000006600231813242085,
-      "tokenShare": 0.0000015501450520821975,
+      "costShare": 0.000006600229909053936,
+      "tokenShare": 0.0000015501440215409088,
       "avgPricePerMtoken": 2.633601086655251
     },
     {
@@ -590,8 +590,8 @@
       "modelCount": 1,
       "topModel": "writer/palmyra-x5-20250428",
       "topModelCost": 14.6089164,
-      "costShare": 0.0000026945820644221584,
-      "tokenShare": 8.483205534137483e-7,
+      "costShare": 0.0000026945812870265494,
+      "tokenShare": 8.483199894475858e-7,
       "avgPricePerMtoken": 1.964692410036033
     },
     {
@@ -604,8 +604,8 @@
       "modelCount": 1,
       "topModel": "deepcogito/cogito-v2.1-671b-20251118",
       "topModelCost": 10.26463875,
-      "costShare": 0.0000018932897359534951,
-      "tokenShare": 9.368503200821876e-7,
+      "costShare": 0.000001893289189733305,
+      "tokenShare": 9.368496972611587e-7,
       "avgPricePerMtoken": 1.25
     },
     {
@@ -618,8 +618,8 @@
       "modelCount": 1,
       "topModel": "upstage/solar-pro-3",
       "topModelCost": 9.0750453,
-      "costShare": 0.0000016738718758907133,
-      "tokenShare": 0.000005299396939311514,
+      "costShare": 0.0000016738713929732827,
+      "tokenShare": 0.00000529939341625582,
       "avgPricePerMtoken": 0.19537046220459406
     },
     {
@@ -632,8 +632,8 @@
       "modelCount": 1,
       "topModel": "gryphe/mythomax-l2-13b",
       "topModelCost": 8.80701224,
-      "costShare": 0.0000016244337754612944,
-      "tokenShare": 0.000012000074199523853,
+      "costShare": 0.0000016244333068069153,
+      "tokenShare": 0.000012000066221836917,
       "avgPricePerMtoken": 0.08373002511174715
     },
     {
@@ -646,8 +646,8 @@
       "modelCount": 1,
       "topModel": "undi95/remm-slerp-l2-13b",
       "topModelCost": 8.5481505,
-      "costShare": 0.0000015766873045615695,
-      "tokenShare": 0.0000021165975590002113,
+      "costShare": 0.000001576686849682201,
+      "tokenShare": 0.000002116596151879521,
       "avgPricePerMtoken": 0.4607553872880538
     },
     {
@@ -660,8 +660,8 @@
       "modelCount": 4,
       "topModel": "bytedance/ui-tars-1.5-7b",
       "topModelCost": 4.3488345,
-      "costShare": 8.021328292932325e-7,
-      "tokenShare": 0.0000048991490342119,
+      "costShare": 8.021325978753263e-7,
+      "tokenShare": 0.000004899145777242268,
       "avgPricePerMtoken": 0.1012718590143337
     },
     {
@@ -674,8 +674,8 @@
       "modelCount": 1,
       "topModel": "baidu/ernie-4.5-vl-424b-a47b",
       "topModelCost": 1.77163431,
-      "costShare": 3.267739992297394e-7,
-      "tokenShare": 4.008546203142869e-7,
+      "costShare": 3.267739049543875e-7,
+      "tokenShare": 4.00854353824879e-7,
       "avgPricePerMtoken": 0.5042242650239754
     },
     {
@@ -688,8 +688,8 @@
       "modelCount": 2,
       "topModel": "rekaai/reka-edge-2603",
       "topModelCost": 0.5851289999999999,
-      "costShare": 1.934969813738533e-7,
-      "tokenShare": 9.400889106799538e-7,
+      "costShare": 1.9349692554935062e-7,
+      "tokenShare": 9.400882857058998e-7,
       "avgPricePerMtoken": 0.1273117261469463
     },
     {
@@ -704,20 +704,6 @@
       "topModelCost": 0,
       "costShare": 0,
       "tokenShare": 0,
-      "avgPricePerMtoken": 0
-    },
-    {
-      "author": "black-forest-labs",
-      "inputTokens": 29801385,
-      "outputTokens": 79982858,
-      "totalTokens": 109784243,
-      "requests": 16159,
-      "cost": 0,
-      "modelCount": 5,
-      "topModel": null,
-      "topModelCost": 0,
-      "costShare": 0,
-      "tokenShare": 0.000012524966257888357,
       "avgPricePerMtoken": 0
     },
     {
@@ -749,34 +735,6 @@
       "avgPricePerMtoken": 0
     },
     {
-      "author": "deepgram",
-      "inputTokens": 42939,
-      "outputTokens": 0,
-      "totalTokens": 42939,
-      "requests": 3075,
-      "cost": 0,
-      "modelCount": 2,
-      "topModel": null,
-      "topModelCost": 0,
-      "costShare": 0,
-      "tokenShare": 4.898786123136708e-9,
-      "avgPricePerMtoken": 0
-    },
-    {
-      "author": "fish-audio",
-      "inputTokens": 3922247,
-      "outputTokens": 0,
-      "totalTokens": 3922247,
-      "requests": 32068,
-      "cost": 0,
-      "modelCount": 5,
-      "topModel": null,
-      "topModelCost": 0,
-      "costShare": 0,
-      "tokenShare": 4.474777981581914e-7,
-      "avgPricePerMtoken": 0
-    },
-    {
       "author": "openrouter",
       "inputTokens": 0,
       "outputTokens": 0,
@@ -791,6 +749,48 @@
       "avgPricePerMtoken": 0
     },
     {
+      "author": "fish-audio",
+      "inputTokens": 3922247,
+      "outputTokens": 0,
+      "totalTokens": 3922247,
+      "requests": 32068,
+      "cost": 0,
+      "modelCount": 5,
+      "topModel": null,
+      "topModelCost": 0,
+      "costShare": 0,
+      "tokenShare": 4.474775006735488e-7,
+      "avgPricePerMtoken": 0
+    },
+    {
+      "author": "deepgram",
+      "inputTokens": 42939,
+      "outputTokens": 0,
+      "totalTokens": 42939,
+      "requests": 3075,
+      "cost": 0,
+      "modelCount": 2,
+      "topModel": null,
+      "topModelCost": 0,
+      "costShare": 0,
+      "tokenShare": 4.89878286640834e-9,
+      "avgPricePerMtoken": 0
+    },
+    {
+      "author": "black-forest-labs",
+      "inputTokens": 29801385,
+      "outputTokens": 79982858,
+      "totalTokens": 109784243,
+      "requests": 16159,
+      "cost": 0,
+      "modelCount": 5,
+      "topModel": null,
+      "topModelCost": 0,
+      "costShare": 0,
+      "tokenShare": 0.000012524957931251536,
+      "avgPricePerMtoken": 0
+    },
+    {
       "author": "thenlper",
       "inputTokens": 24255151,
       "outputTokens": 0,
@@ -801,7 +801,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.0000027671999146087573,
+      "tokenShare": 0.0000027671980749655815,
       "avgPricePerMtoken": 0
     },
     {
@@ -815,7 +815,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 1.1063939091491456e-8,
+      "tokenShare": 1.1063931736150073e-8,
       "avgPricePerMtoken": 0
     },
     {
@@ -829,7 +829,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 7.43842664679887e-7,
+      "tokenShare": 7.438421701709523e-7,
       "avgPricePerMtoken": 0
     },
     {
@@ -843,7 +843,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.000034959953802595575,
+      "tokenShare": 0.00003495993056110872,
       "avgPricePerMtoken": 0
     },
     {
@@ -857,7 +857,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 9.928795232342766e-7,
+      "tokenShare": 9.928788631648577e-7,
       "avgPricePerMtoken": 0
     },
     {
@@ -871,7 +871,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.00012083474518763961,
+      "tokenShare": 0.00012083466485632232,
       "avgPricePerMtoken": 0
     },
     {
@@ -885,7 +885,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 1.0861092222050224e-10,
+      "tokenShare": 1.0861085001562075e-10,
       "avgPricePerMtoken": 0
     },
     {
@@ -899,7 +899,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.00028563168031727707,
+      "tokenShare": 0.0002856314904284408,
       "avgPricePerMtoken": 0
     },
     {
@@ -913,7 +913,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.00007211297911849332,
+      "tokenShare": 0.0000721129311775588,
       "avgPricePerMtoken": 0
     },
     {
@@ -927,7 +927,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.00001024639535955222,
+      "tokenShare": 0.000010246388547716472,
       "avgPricePerMtoken": 0
     },
     {
@@ -941,7 +941,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 0.0000010644540068904844,
+      "tokenShare": 0.0000010644532992381245,
       "avgPricePerMtoken": 0
     },
     {
@@ -955,7 +955,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 8.947931362814648e-7,
+      "tokenShare": 8.947925414201834e-7,
       "avgPricePerMtoken": 0
     },
     {
@@ -969,7 +969,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 3.776283115019563e-11,
+      "tokenShare": 3.776280604534713e-11,
       "avgPricePerMtoken": 0
     },
     {
@@ -983,7 +983,7 @@
       "topModel": null,
       "topModelCost": 0,
       "costShare": 0,
-      "tokenShare": 2.7380904761471153e-12,
+      "tokenShare": 2.7380886558559853e-12,
       "avgPricePerMtoken": 0
     }
   ],
@@ -999,8 +999,8 @@
       "models": 124
     },
     "budget": {
-      "cost": 932831.51708948,
-      "tokens": 5988595472466,
+      "cost": 932833.08123582,
+      "tokens": 5988601299624,
       "models": 119
     },
     "free": {
@@ -1010,50 +1010,50 @@
     }
   },
   "concentration": {
-    "top5Share": 0.8677399818081342,
-    "top10Share": 0.9764445715546091,
-    "hhi": 2626.5469859053205,
-    "top5Revenue": 4704529.514446616,
-    "totalRevenue": 5421588.970285379
+    "top5Share": 0.8677400199655757,
+    "top10Share": 0.9764445783504261,
+    "hhi": 2626.545954601559,
+    "top5Revenue": 4704531.078592957,
+    "totalRevenue": 5421590.53443172
   },
   "priceModelCount": 400,
   "rankingRowCount": 482,
   "missingPrice": [
-    "kwaivgi/kling-v3.0-pro-20260429",
-    "black-forest-labs/flux-3-video-20260804",
-    "google/veo-3.1-20260320",
+    "kwaivgi/kling-v3.0-std-20260429",
+    "openai/sora-2-pro-20260320",
     "alibaba/wan-2.7-20260414",
-    "runway/gen-4.5-20260729",
-    "alibaba/happyhorse-1.1-20260624",
+    "openai/whisper-large-v3",
+    "google/chirp-3",
+    "qwen/qwen3-asr-flash-2026-02-10",
     "kwaivgi/kling-video-o1-20260420",
-    "google/veo-3.1-lite-20260331",
+    "nvidia/parakeet-tdt-0.6b-v3",
     "alibaba/happyhorse-1.0-20260624",
-    "bytedance/seedance-2.0-20260414",
-    "openai/whisper-large-v3-turbo",
+    "runway/aleph-2-20260729",
     "openai/whisper-1",
     "openai/gpt-transcribe-20260805",
-    "minimax/hailuo-2.3-20260420",
     "cohere/rerank-v3.5",
-    "kwaivgi/kling-v3.0-std-20260429",
-    "bytedance/seedance-2.0-fast-20260414",
-    "deepgram/nova-3-20260714",
     "fish-audio/transcribe-1-20260729",
     "x-ai/grok-stt-20260723",
-    "nvidia/parakeet-tdt-0.6b-v3",
-    "google/veo-3.1-fast-20260320",
-    "minimax/hailuo-03-20260730",
-    "x-ai/grok-imagine-video-20260512",
-    "openai/whisper-large-v3",
-    "x-ai/grok-imagine-video-1.5-20260719",
-    "qwen/qwen3-asr-flash-2026-02-10",
-    "cohere/rerank-4-pro",
-    "google/chirp-3",
+    "google/veo-3.1-lite-20260331",
     "microsoft/mai-transcribe-1.5",
     "bytedance/seedance-1-5-pro-20260320",
-    "openai/sora-2-pro-20260320",
+    "google/veo-3.1-fast-20260320",
+    "alibaba/happyhorse-1.1-20260624",
+    "cohere/rerank-4-pro",
+    "runway/gen-4.5-20260729",
+    "minimax/hailuo-03-20260730",
+    "x-ai/grok-imagine-video-20260512",
+    "x-ai/grok-imagine-video-1.5-20260719",
+    "bytedance/seedance-2.0-fast-20260414",
+    "deepgram/nova-3-20260714",
     "alibaba/wan-2.6-20260327",
     "cohere/rerank-4-fast",
-    "runway/aleph-2-20260729",
+    "minimax/hailuo-2.3-20260420",
+    "black-forest-labs/flux-3-video-20260804",
+    "google/veo-3.1-20260320",
+    "bytedance/seedance-2.0-20260414",
+    "kwaivgi/kling-v3.0-pro-20260429",
+    "openai/whisper-large-v3-turbo",
     "thenlper/gte-base-20251117",
     "perplexity/pplx-embed-v1-4B",
     "perplexity/pplx-embed-v1-0.6b",
@@ -1299,15 +1299,15 @@
       "name": "deepseek/deepseek-v4-flash-20260731",
       "author": "deepseek",
       "variant": "standard",
-      "inputTokens": 1172574886625,
-      "outputTokens": 58698408860,
+      "inputTokens": 1172575654500,
+      "outputTokens": 58702642037,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 43876993,
+      "requests": 43877024,
       "inputPricePerToken": 1.4e-7,
       "outputPricePerToken": 2.8e-7,
       "tier": "budget",
-      "cost": 180596.0386083
+      "cost": 180597.33140036
     },
     {
       "id": "deepseek/deepseek-v4-pro-20260423",
@@ -2035,15 +2035,15 @@
       "name": "google/gemma-4-31b-it-20260402",
       "author": "google",
       "variant": "standard",
-      "inputTokens": 52190312633,
-      "outputTokens": 4475303538,
+      "inputTokens": 52190352307,
+      "outputTokens": 4476089970,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 8950400,
+      "requests": 8950412,
       "inputPricePerToken": 1e-7,
       "outputPricePerToken": 3.4e-7,
       "tier": "budget",
-      "cost": 6740.634466219999
+      "cost": 6740.905820499999
     },
     {
       "id": "x-ai/grok-4.20-20260309",
@@ -6478,48 +6478,32 @@
       "cost": 0
     },
     {
-      "id": "kwaivgi/kling-v3.0-pro-20260429",
+      "id": "kwaivgi/kling-v3.0-std-20260429",
       "priceId": null,
-      "name": "kwaivgi/kling-v3.0-pro-20260429",
+      "name": "kwaivgi/kling-v3.0-std-20260429",
       "author": "kwaivgi",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 308,
+      "requests": 272,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
       "cost": 0
     },
     {
-      "id": "black-forest-labs/flux-3-video-20260804",
+      "id": "openai/sora-2-pro-20260320",
       "priceId": null,
-      "name": "black-forest-labs/flux-3-video-20260804",
-      "author": "black-forest-labs",
+      "name": "openai/sora-2-pro-20260320",
+      "author": "openai",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 246,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "google/veo-3.1-20260320",
-      "priceId": null,
-      "name": "google/veo-3.1-20260320",
-      "author": "google",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 1116,
+      "requests": 31,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -6542,32 +6526,48 @@
       "cost": 0
     },
     {
-      "id": "runway/gen-4.5-20260729",
+      "id": "openai/whisper-large-v3",
       "priceId": null,
-      "name": "runway/gen-4.5-20260729",
-      "author": "runway",
+      "name": "openai/whisper-large-v3",
+      "author": "openai",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 34,
+      "requests": 841422,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
       "cost": 0
     },
     {
-      "id": "alibaba/happyhorse-1.1-20260624",
+      "id": "google/chirp-3",
       "priceId": null,
-      "name": "alibaba/happyhorse-1.1-20260624",
-      "author": "alibaba",
+      "name": "google/chirp-3",
+      "author": "google",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 263,
+      "requests": 9007,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "qwen/qwen3-asr-flash-2026-02-10",
+      "priceId": null,
+      "name": "qwen/qwen3-asr-flash-2026-02-10",
+      "author": "qwen",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 28109,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -6590,16 +6590,16 @@
       "cost": 0
     },
     {
-      "id": "google/veo-3.1-lite-20260331",
+      "id": "nvidia/parakeet-tdt-0.6b-v3",
       "priceId": null,
-      "name": "google/veo-3.1-lite-20260331",
-      "author": "google",
+      "name": "nvidia/parakeet-tdt-0.6b-v3",
+      "author": "nvidia",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 4687,
+      "requests": 3758,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -6622,32 +6622,16 @@
       "cost": 0
     },
     {
-      "id": "bytedance/seedance-2.0-20260414",
+      "id": "runway/aleph-2-20260729",
       "priceId": null,
-      "name": "bytedance/seedance-2.0-20260414",
-      "author": "bytedance",
+      "name": "runway/aleph-2-20260729",
+      "author": "runway",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 1494,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "openai/whisper-large-v3-turbo",
-      "priceId": null,
-      "name": "openai/whisper-large-v3-turbo",
-      "author": "openai",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 111919,
+      "requests": 1,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -6686,22 +6670,6 @@
       "cost": 0
     },
     {
-      "id": "minimax/hailuo-2.3-20260420",
-      "priceId": null,
-      "name": "minimax/hailuo-2.3-20260420",
-      "author": "minimax",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 30,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
       "id": "cohere/rerank-v3.5",
       "priceId": null,
       "name": "cohere/rerank-v3.5",
@@ -6718,48 +6686,16 @@
       "cost": 0
     },
     {
-      "id": "kwaivgi/kling-v3.0-std-20260429",
-      "priceId": null,
-      "name": "kwaivgi/kling-v3.0-std-20260429",
-      "author": "kwaivgi",
+      "id": "openrouter/bodybuilder",
+      "priceId": "openrouter/bodybuilder",
+      "name": "openrouter/bodybuilder",
+      "author": "openrouter",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 272,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "bytedance/seedance-2.0-fast-20260414",
-      "priceId": null,
-      "name": "bytedance/seedance-2.0-fast-20260414",
-      "author": "bytedance",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 2289,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "deepgram/nova-3-20260714",
-      "priceId": null,
-      "name": "deepgram/nova-3-20260714",
-      "author": "deepgram",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 1860,
+      "requests": 342,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -6798,160 +6734,16 @@
       "cost": 0
     },
     {
-      "id": "nvidia/parakeet-tdt-0.6b-v3",
+      "id": "google/veo-3.1-lite-20260331",
       "priceId": null,
-      "name": "nvidia/parakeet-tdt-0.6b-v3",
-      "author": "nvidia",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 3758,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "google/veo-3.1-fast-20260320",
-      "priceId": null,
-      "name": "google/veo-3.1-fast-20260320",
+      "name": "google/veo-3.1-lite-20260331",
       "author": "google",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 3496,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "minimax/hailuo-03-20260730",
-      "priceId": null,
-      "name": "minimax/hailuo-03-20260730",
-      "author": "minimax",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 718,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "x-ai/grok-imagine-video-20260512",
-      "priceId": null,
-      "name": "x-ai/grok-imagine-video-20260512",
-      "author": "x-ai",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 887,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "openai/whisper-large-v3",
-      "priceId": null,
-      "name": "openai/whisper-large-v3",
-      "author": "openai",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 841422,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "openrouter/bodybuilder",
-      "priceId": "openrouter/bodybuilder",
-      "name": "openrouter/bodybuilder",
-      "author": "openrouter",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 342,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "x-ai/grok-imagine-video-1.5-20260719",
-      "priceId": null,
-      "name": "x-ai/grok-imagine-video-1.5-20260719",
-      "author": "x-ai",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 418,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "qwen/qwen3-asr-flash-2026-02-10",
-      "priceId": null,
-      "name": "qwen/qwen3-asr-flash-2026-02-10",
-      "author": "qwen",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 28109,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "cohere/rerank-4-pro",
-      "priceId": null,
-      "name": "cohere/rerank-4-pro",
-      "author": "cohere",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 32605,
-      "inputPricePerToken": 0,
-      "outputPricePerToken": 0,
-      "tier": "free",
-      "cost": 0
-    },
-    {
-      "id": "google/chirp-3",
-      "priceId": null,
-      "name": "google/chirp-3",
-      "author": "google",
-      "variant": "standard",
-      "inputTokens": 0,
-      "outputTokens": 0,
-      "cachedTokens": 0,
-      "reasoningTokens": 0,
-      "requests": 9007,
+      "requests": 4687,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -6990,16 +6782,144 @@
       "cost": 0
     },
     {
-      "id": "openai/sora-2-pro-20260320",
+      "id": "google/veo-3.1-fast-20260320",
       "priceId": null,
-      "name": "openai/sora-2-pro-20260320",
-      "author": "openai",
+      "name": "google/veo-3.1-fast-20260320",
+      "author": "google",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 31,
+      "requests": 3496,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "alibaba/happyhorse-1.1-20260624",
+      "priceId": null,
+      "name": "alibaba/happyhorse-1.1-20260624",
+      "author": "alibaba",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 263,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "cohere/rerank-4-pro",
+      "priceId": null,
+      "name": "cohere/rerank-4-pro",
+      "author": "cohere",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 32605,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "runway/gen-4.5-20260729",
+      "priceId": null,
+      "name": "runway/gen-4.5-20260729",
+      "author": "runway",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 34,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "minimax/hailuo-03-20260730",
+      "priceId": null,
+      "name": "minimax/hailuo-03-20260730",
+      "author": "minimax",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 718,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "x-ai/grok-imagine-video-20260512",
+      "priceId": null,
+      "name": "x-ai/grok-imagine-video-20260512",
+      "author": "x-ai",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 887,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "x-ai/grok-imagine-video-1.5-20260719",
+      "priceId": null,
+      "name": "x-ai/grok-imagine-video-1.5-20260719",
+      "author": "x-ai",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 418,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "bytedance/seedance-2.0-fast-20260414",
+      "priceId": null,
+      "name": "bytedance/seedance-2.0-fast-20260414",
+      "author": "bytedance",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 2289,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "deepgram/nova-3-20260714",
+      "priceId": null,
+      "name": "deepgram/nova-3-20260714",
+      "author": "deepgram",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 1860,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
@@ -7038,16 +6958,96 @@
       "cost": 0
     },
     {
-      "id": "runway/aleph-2-20260729",
+      "id": "minimax/hailuo-2.3-20260420",
       "priceId": null,
-      "name": "runway/aleph-2-20260729",
-      "author": "runway",
+      "name": "minimax/hailuo-2.3-20260420",
+      "author": "minimax",
       "variant": "standard",
       "inputTokens": 0,
       "outputTokens": 0,
       "cachedTokens": 0,
       "reasoningTokens": 0,
-      "requests": 1,
+      "requests": 30,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "black-forest-labs/flux-3-video-20260804",
+      "priceId": null,
+      "name": "black-forest-labs/flux-3-video-20260804",
+      "author": "black-forest-labs",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 246,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "google/veo-3.1-20260320",
+      "priceId": null,
+      "name": "google/veo-3.1-20260320",
+      "author": "google",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 1116,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "bytedance/seedance-2.0-20260414",
+      "priceId": null,
+      "name": "bytedance/seedance-2.0-20260414",
+      "author": "bytedance",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 1494,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "kwaivgi/kling-v3.0-pro-20260429",
+      "priceId": null,
+      "name": "kwaivgi/kling-v3.0-pro-20260429",
+      "author": "kwaivgi",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 308,
+      "inputPricePerToken": 0,
+      "outputPricePerToken": 0,
+      "tier": "free",
+      "cost": 0
+    },
+    {
+      "id": "openai/whisper-large-v3-turbo",
+      "priceId": null,
+      "name": "openai/whisper-large-v3-turbo",
+      "author": "openai",
+      "variant": "standard",
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cachedTokens": 0,
+      "reasoningTokens": 0,
+      "requests": 111919,
       "inputPricePerToken": 0,
       "outputPricePerToken": 0,
       "tier": "free",
