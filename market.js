@@ -43,22 +43,25 @@ function summarize(idx) {
   };
 }
 function breadth(dates) {
-  if (dates.length < 2) return { advancers: 0, decliners: 0, unchanged: 0, total: 0, topGainers: [], topLosers: [] };
+  if (dates.length < 2) return { advancers: 0, decliners: 0, unchanged: 0, total: 0, topGainers: [], topLosers: [], changes: {} };
   var today = store.loadSnapshot(dates[dates.length - 1]);
   var yest = store.loadSnapshot(dates[dates.length - 2]);
-  if (!today || !yest || !today.authors) return { advancers: 0, decliners: 0, unchanged: 0, total: 0, topGainers: [], topLosers: [] };
+  if (!today || !yest || !today.authors) return { advancers: 0, decliners: 0, unchanged: 0, total: 0, topGainers: [], topLosers: [], changes: {} };
   var prevMap = {};
   (yest.authors || []).forEach(function(a) { prevMap[a.author] = a.cost; });
-  var changes = []; var adv = 0, dec = 0, unc = 0;
+  var changes = [], changesMap = {};
+  var adv = 0, dec = 0, unc = 0;
   (today.authors || []).forEach(function(a) {
     var pc = prevMap[a.author];
-    if (pc === undefined) { adv++; changes.push({ author: a.author, cost: a.cost, prevCost: 0, changePct: 100, isNew: true }); return; }
+    if (pc === undefined) { adv++; var rec={author:a.author,cost:a.cost,prevCost:0,changePct:100,isNew:true}; changes.push(rec); changesMap[a.author]=rec; return; }
     var diff = a.cost - pc, pct = pc > 0 ? (diff / pc) * 100 : 0;
     if (diff > 0.01) adv++; else if (diff < -0.01) dec++; else unc++;
-    changes.push({ author: a.author, cost: a.cost, prevCost: pc, change: diff, changePct: round(pct, 2) });
+    var rec2 = { author: a.author, cost: a.cost, prevCost: pc, change: diff, changePct: round(pct, 2) };
+    changes.push(rec2); changesMap[a.author] = rec2;
   });
   changes.sort(function(a, b) { return b.changePct - a.changePct; });
-  return { advancers: adv, decliners: dec, unchanged: unc, total: today.authors.length, topGainers: changes.slice(0, 5), topLosers: changes.slice(-5).reverse() };
+  return { advancers: adv, decliners: dec, unchanged: unc, total: today.authors.length,
+    topGainers: changes.slice(0, 5), topLosers: changes.slice(-5).reverse(), changes: changesMap };
 }
 function getMarket() {
   var history = store.getHistory();
