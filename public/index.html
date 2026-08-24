@@ -48,7 +48,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 10px;
 <div class="panel">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
 <h2 style="margin:0">ORX 指数走势</h2>
-<div class="kline-tabs"><button class="ktab active" data-mode="day">日K</button><button class="ktab" data-mode="week">周K</button><button class="ktab" data-mode="line">走势</button></div>
+<div class="kline-tabs"><button class="ktab" data-mode="day">日K</button><button class="ktab" data-mode="week">周K</button><button class="ktab active" data-mode="line">走势</button></div>
 </div>
 <div class="chart-wrap" style="height:420px;position:relative"><canvas id="idxChart"></canvas></div>
 </div>
@@ -62,7 +62,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px 10px;
 <div class="panel"><h2>Top 15 公司（含日涨跌幅）</h2><div style="max-height:480px;overflow:auto"><table id="companyTable"><thead><tr><th>#</th><th>公司</th><th>日收入</th><th>涨跌%</th><th>份额</th><th>均价/M</th><th>主力模型</th></tr></thead><tbody></tbody></table></div></div>
 </div>
 <div class="panel"><h2 id="modelTitle">全模型明细</h2><div style="max-height:560px;overflow:auto"><table id="modelTable"><thead><tr><th>模型</th><th>档位</th><th>输入</th><th>输出</th><th>请求</th><th>入$/M</th><th>出$/M</th><th>费用</th></tr></thead><tbody></tbody></table></div></div>
-<div class="foot">ORX 指数：首日=1000点。日K开盘=前日收盘。每日23:55 UTC自动抓取。注：UTC白天数据为当日累计，非全天完整值。</div>
+<div class="foot">ORX 指数：首日=1000点。日K开盘=前日收盘。每日23:55 UTC自动抓取。注：UTC日中数据为当日累计，非全天完整值。</div>
 </main>
 <script>
 var PAL=['#4f9eff','#3fb950','#f85149','#d2a8ff','#ffa657','#56d4dd','#f0883e','#a5d6ff','#79c0ff','#ff7b72','#7ee787','#bc8cff'];
@@ -76,7 +76,7 @@ function fD(){return gj('/api/dates').catch(function(){sm=true;return gj('data/d
 function fS(d){if(!sm){return gj('/api/snapshot?date='+encodeURIComponent(d)).catch(function(){sm=true;return gj('data/snapshots/'+d+'.json')})}return gj('data/snapshots/'+d+'.json')}
 function fM(){if(!sm){return gj('/api/market').catch(function(){sm=true;return gj('data/market.json').catch(function(){return null})})}return gj('data/market.json').catch(function(){return null})}
 function dst(k){if(C[k]){C[k].destroy();delete C[k]}}
-var chartMode='day';
+var chartMode='line';
 function dailyOHLC(series){return series.map(function(d,i){var o=i>0?series[i-1].close:d.close;return{date:d.date,open:o,close:d.close,high:Math.max(o,d.close),low:Math.min(o,d.close),vol:d.volume}})}
 function weeklyOHLC(daily){
   var weeks=[],cur=null;
